@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--Project: Web App Part 1-->
+<!--Rami Hollingsworth-->
+<!--Term 0112-->
+
+
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
@@ -14,19 +19,22 @@
 		<fieldset>
 		<legend>Add to Database</legend>
 			<ul>
-			<li><label for= "Name of Electorinic">Name of Electronic</label><input type="text"></li>
-			<li><label for= "Purchase date">Purchase Date</label><input type="date" placeholder="01-01-2011"></li>
-			<li><label type= "rating">Rate it on a scale of 1 to 5:<input type= "range" min= "1" max= "5"></label></li>
-			<li><input type="checkbox" checked value="Computer" id="computer" / ><label for= "computer">Computer</label></li>
-			<li><input type="checkbox" value="TV" id="tv" / ><label for= "tv">T.V.</label></li>
-			<li><input type="checkbox" value="Phone" id="phone" / ><label for= "phone">Phone</label></li>
-			<li><input type="checkbox" value="Other" id="other" / ><label for= "other">Other</label></li>
-			<li><label for= "Notes">Notes</label><textarea rows="1" cols="20">Enter your notes here...</textarea>
-			<li><button type="submit" > Submit</button></li>	
+				<li><label for= "name">Name of Electronic</label><input type="text" id="name"></li>
+				<li><label for= "purchased">Purchase Date</label><input type="date" id="purchased"></li>
+				<li><label for= "rating">Rate it on a scale of 1 to 5:</label><input type= "range" min= "1" max= "5" id="rating"></li>
 			</ul>
-		
-		
+				<li>What type of Electronic:
+					<ul>
+						<li><input type="radio" checked value="Computer" id="computer" /><label for= "computer">Computer</label></li>
+						<li><input type="radio" value="TV" id="tv" /><label for= "tv">T.V.</label></li>
+						<li><input type="radio" value="Phone" id="phone" /><label for= "phone">Phone</label></li>
+						<li><input type="radio" value="Other" id="other" /><label for= "other">Other</label></li>
+						<li><label for= "Notes">Notes</label><textarea rows="1" cols="20">Enter your notes here...</textarea>
+						<li><button type="submit"> Submit</button></li>	
+					</ul>
+				</li>
 		</fieldset>
+		<a href="#">Clear Stored Data</a>
 </body>
 	
 </html>
