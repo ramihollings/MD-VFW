@@ -2,6 +2,8 @@
 <!--Project: Web App Part 1-->
 <!--Rami Hollingsworth-->
 <!--Term 0112-->
+<!--Radio buttons must have a name attribute. The value of the name attribute should be the same for each radio button that belongs to the same question. lines 31-35-->
+
 
 
 <html lang="en">
@@ -23,15 +25,17 @@
 				<li><label for= "purchased">Purchase Date</label><input type="date" id="purchased"></li>
 				<li><label for= "rating">Rate it on a scale of 1 to 5:</label><input type= "range" min= "1" max= "5" id="rating"></li>
 			</ul>
+			<ul>
 				<li>What type of Electronic:
 					<ul>
 						<li><input type="radio" checked value="Computer" id="computer" /><label for= "computer">Computer</label></li>
 						<li><input type="radio" value="TV" id="tv" /><label for= "tv">T.V.</label></li>
 						<li><input type="radio" value="Phone" id="phone" /><label for= "phone">Phone</label></li>
 						<li><input type="radio" value="Other" id="other" /><label for= "other">Other</label></li>
-						<li><label for= "Notes">Notes</label><textarea rows="1" cols="20">Enter your notes here...</textarea>	
+						<li><label for= "notes">Notes</label><textarea rows="1" cols="20" id="notes">Enter your notes here...</textarea>	
 					</ul>
 				</li>
+			</ul>
 		<a href="#">Clear Stored Data</a>
 		</fieldset>
 		<button type="submit"> Submit</button>
