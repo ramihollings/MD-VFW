@@ -1,4 +1,40 @@
-<!DOCTYPE html>
-<!--Project: Web App Part 1-->
-<!--Rami Hollingsworth-->
-<!--Term 0112-->
+/*
+CSS Style Sheet
+Project: Web App Part 2
+Rami Hollingsworth
+Term 0112
+*/
+
+
+h1 {
+	margin: 5px 10px;
+	border: 3px solid #000;
+	padding-left: 5px;
+	background-color: blue
+
+}
+
+legend{
+	color: red;
+	font-style: ;
+	font-family: "Times New Roman";
+	font-weight: bold
+	line-height: 15px;
+	
+}
+
+
+	
+/*
+
+
+hover{color:white;outline: 1px blue}
+	padding:;
+	outline:;
+	width:;
+	height:;
+	display: ;
+	overflow: ;
+	visibility: ;
+	word-wrap: ;
+}
