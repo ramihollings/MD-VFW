@@ -25,15 +25,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
+	function storeData(){
+		localStorage.setItem("","");
+	}
+	
 	var ownTypes = ["---Do I own this Item---", "Own","Owned", "Want"];
 	selectOwnership();
 	/*
 	
 	var displayLink = $("displayLink");
-	displayLink.addEventLister("click", getData);
+	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
-	clearLink.addEventLister("click", clearLocal);
+	clearLink.addEventListener("click", clearLocal);*/
 	var save = $("submit");
-	save.addEventLister("click, saveData");
-*/
+	save.addEventListener("click", storeData);
+
 });
