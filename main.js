@@ -6,6 +6,7 @@
 
 // Wait until DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
+	alert(localStorage.value(0));
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
@@ -56,16 +57,16 @@ window.addEventListener("DOMContentLoaded", function(){
 		toeVale
 	;
 	selectOwnership();
-	/*
+	
 //Set Link and Submit Click Events	
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);*/
+	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
-
+/*
 //Clear data
 function clearLocal(){
 	if(localStorage.length === 0){
@@ -75,4 +76,4 @@ function clearLocal(){
 		window.location.reload();
 		return false;
 	}
-};
+};*/
