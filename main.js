@@ -4,9 +4,9 @@
 // Term 0112
 
 
-
 // Wait until DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
+	alert(localStorage.value(0));
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", function(){
 // Create select field element and populate with options.    makeCats	
 	function selectOwnership(){
 		var formTag = document.getElementsByTagName("form"),
-			selectLi = $("select"),
+			selectListItem = $("select"),
 			makeSelect = document.createElement("select");
 			makeSelect.setAttribute("id","groups");
 		for(var i=0, j=ownTypes.length; i<j; i++){
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
 		}
-		selectLi.appendChild(makeSelect);
+		selectListItem.appendChild(makeSelect);
 	}
 	//Find value of selected radio button.
 	function getSelectRadio(){
@@ -54,15 +54,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 //Variable Defaults	
 	var ownTypes = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeValue
+		toeVale
 	;
 	selectOwnership();
-	/*
+	
 //Set Link and Submit Click Events	
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);*/
+	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
@@ -76,4 +76,4 @@ function clearLocal(){
 		window.location.reload();
 		return false;
 	}
-};*
+};*/
