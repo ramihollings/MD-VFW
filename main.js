@@ -56,9 +56,15 @@ window.addEventListener("DOMContentLoaded", function(){
 	var contactGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
 		toeValue
 	;
+<<<<<<< HEAD
 	makeCats();
 	
 	/*Set Link and Submit Click Events	
+=======
+	selectOwnership();
+	/*
+//Set Link and Submit Click Events	
+>>>>>>> parent of cae94c8... still trying
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
@@ -66,3 +72,17 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
+<<<<<<< HEAD
+=======
+
+//Clear data
+function clearLocal(){
+	if(localStorage.length === 0){
+		alert("All data cleared.")
+	}else{
+		localStorage.clear();
+		window.location.reload();
+		return false;
+	}
+};
+>>>>>>> parent of cae94c8... still trying
