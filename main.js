@@ -4,6 +4,7 @@
 // Term 0112
 
 
+
 // Wait until DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
 	function $(x){
@@ -13,7 +14,7 @@ window.addEventListener("DOMContentLoaded", function(){
 // Create select field element and populate with options.    makeCats	
 	function selectOwnership(){
 		var formTag = document.getElementsByTagName("form"),
-			selectListItem = $("select"),
+			selectLi = $("select"),
 			makeSelect = document.createElement("select");
 			makeSelect.setAttribute("id","groups");
 		for(var i=0, j=ownTypes.length; i<j; i++){
@@ -23,7 +24,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
 		}
-		selectListItem.appendChild(makeSelect);
+		selectLi.appendChild(makeSelect);
 	}
 	//Find value of selected radio button.
 	function getSelectRadio(){
@@ -53,7 +54,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 //Variable Defaults	
 	var ownTypes = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeVale
+		toeValue
 	;
 	selectOwnership();
 	/*
