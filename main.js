@@ -4,9 +4,9 @@
 // Term 0112
 
 
+
 // Wait until DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
-	alert(localStorage.value(0));
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
