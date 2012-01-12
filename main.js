@@ -54,15 +54,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 //Variable Defaults	
 	var ownTypes = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeVale
+		toeValue
 	;
 	selectOwnership();
-	
+	/*
 //Set Link and Submit Click Events	
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);
+	clearLink.addEventListener("click", clearLocal);*/
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
