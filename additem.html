@@ -24,23 +24,25 @@
 	<form action= "#" method= "post">
 		<fieldset>
 		<legend>Add to Database</legend>
-			<ul>
-				<li id="select"><label for="groups">Add To Group:</label><br /></li>
-				<li><label for= "name">Name of Electronic</label><input type="text" id="name"></li>
-				<li><label for= "purchased">Purchase Date</label><input type="date" id="purchased"></li>
-				<li><label for= "rating">Rate it on a scale of 1 to 5:</label><input type= "range" min= "1" max= "5" id="rating"></li>
-			</ul>
-			<ul>
-				<li>What type of Electronic:
-					<ul>
-						<li><input type="radio" checked value="Computer" id="computer" name="toe" /><label for= "computer">Computer</label></li>
-						<li><input type="radio" value="TV" id="tv" name="toe" /><label for= "tv">T.V.</label></li>
-						<li><input type="radio" value="Phone" id="phone" name="toe" /><label for= "phone">Phone</label></li>
-						<li><input type="radio" value="Other" id="other" name="toe" /><label for= "other">Other</label></li>
-						<li><label for= "notes">Notes</label><textarea rows="1" cols="20" id="notes">Enter your notes here...</textarea>	
-					</ul>
-				</li>
-			</ul>
+			<div id= "items">
+				<ul>
+					<li id="select"><label for="groups">Add To Group:</label><br /></li>
+					<li><label for= "name">Name of Electronic</label><input type="text" id="name"></li>
+					<li><label for= "purchased">Purchase Date</label><input type="date" id="purchased"></li>
+					<li><label for= "rating">Rate it on a scale of 1 to 5:</label><input type= "range" min= "1" max= "5" id="rating"></li>
+				</ul>
+				<ul>
+					<li>What type of Electronic:
+						<ul>
+							<li><input type="radio" checked value="Computer" id="computer" name="toe" /><label for= "computer">Computer</label></li>
+							<li><input type="radio" value="TV" id="tv" name="toe" /><label for= "tv">T.V.</label></li>
+							<li><input type="radio" value="Phone" id="phone" name="toe" /><label for= "phone">Phone</label></li>
+							<li><input type="radio" value="Other" id="other" name="toe" /><label for= "other">Other</label></li>
+							<li><label for= "notes">Notes</label><textarea rows="1" cols="20" id="notes">Enter your notes here...</textarea>	
+						</ul>
+					</li>
+				</ul>
+			</div>
 		<a href="#" id="clear">Clear Stored Data</a>
 		<a href="#" id="displayLink">Display Data</a>
 		</fieldset>

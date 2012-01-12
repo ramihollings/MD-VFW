@@ -35,6 +35,27 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 	}
+	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$("contactForm").style.display = "none";
+				$("clear").style.display = "inline";
+				$("display").style.display = "none";
+				$("addNewItem").style.display = "inline";
+				
+				break;
+			case "off":
+				$("contactForm").style.display = "block";
+				$("clear").style.display = "inline";
+				$("display").style.display = "inline";
+				$("addNewItem").style.display = "none";
+				$("items").style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
 	function storeData(){
 		var id			= Math.floor(Math.random()*1000000007);
 		//Gather up all our form field values and store in an object.
@@ -52,22 +73,42 @@ window.addEventListener("DOMContentLoaded", function(){
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Item Saved :]");
 		}
+		
+		function getData(){
+			toggleControls();
+			var makeDiv = document.createElement("div");
+			makeDiv.setAttribute("id", "items");
+			var makeList = document.createElement("ul");
+			makeDiv.appendChild(makeList);
+			document.body.appendChild(makeDiv);
+			$("items").style.display = "block";
+			for(var i=0, len=localStorage.length; i<len;i++){
+				var makeli = document.createElement("li");
+				makeList.appendChild(makeli);
+				var key= localStorage.key(i);
+				var value = localStorage.getItem(key);
+				var obj = JSON.parse(value);
+				var makeSubList = document.createElement("ul");
+				makeli.appendChild(makeSubList);
+				for(var n in obj){
+					var makeSubli = document.createElement("li");
+					makeSubList.appendChild(makeSubli);
+					var optSubText = obj[n][0]+" "+obj[n][1];
+					makeSubli.innerHTML = optSubText;
+				}
+			}
+		}
 //Variable Defaults	
 	var contactGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
 		toeValue
 	;
 	makeCats();
 	
-	/*Set Link and Submit Click Events	
-=======
-	selectOwnership();
-	/*
-//Set Link and Submit Click Events	
->>>>>>> parent of cae94c8... still trying
+	//Set Link and Submit Click Events		
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
-	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);*/
+	//var clearLink = $("clear");
+	//clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
