@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
-
+/*
 //Clear data
 function clearLocal(){
 	if(localStorage.length === 0){
@@ -76,4 +76,4 @@ function clearLocal(){
 		window.location.reload();
 		return false;
 	}
-};
+};*
