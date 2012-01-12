@@ -12,19 +12,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		return theElement;
 	}
 // Create select field element and populate with options.    makeCats	
-	function selectOwnership(){
+	function makeCats(){
 		var formTag = document.getElementsByTagName("form"),
-			selectListItem = $("select"),
+			selectLi = $("select"),
 			makeSelect = document.createElement("select");
 			makeSelect.setAttribute("id","groups");
-		for(var i=0, j=ownTypes.length; i<j; i++){
+		for(var i=0, j=contactGroups.length; i<j; i++){
 			var makeOption = document.createElement("option");
-			var optText = ownTypes[i];
+			var optText = contactGroups[i];
 			makeOption.setAttribute("value", optText);
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
 		}
-		selectListItem.appendChild(makeSelect);
+		selectLi.appendChild(makeSelect);
 	}
 	//Find value of selected radio button.
 	function getSelectRadio(){
@@ -53,10 +53,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Item Saved :]");
 		}
 //Variable Defaults	
-	var ownTypes = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeVale
+	var contactGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
+		toeValue
 	;
-	selectOwnership();
+	makeCats();
 	
 	/*Set Link and Submit Click Events	
 	var displayLink = $("displayLink");
