@@ -72,10 +72,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		//Save data into Local Storage: Use Stringify to convert our object to a string.
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Item Saved :]");
-		}
+	}
 		
-		function getData(){
+	function getData(){
 			toggleControls();
+			if(localStorage.length ===0){
+				alert("No data Stored"):
+			}		
 			var makeDiv = document.createElement("div");
 			makeDiv.setAttribute("id", "items");
 			var makeList = document.createElement("ul");
@@ -95,20 +98,29 @@ window.addEventListener("DOMContentLoaded", function(){
 					makeSubList.appendChild(makeSubli);
 					var optSubText = obj[n][0]+" "+obj[n][1];
 					makeSubli.innerHTML = optSubText;
-				}
 			}
 		}
+	}
+	function clearLocal(){
+		if(localStorage.length ===0){
+			alert("Database Empty.")
+		}else{
+			localStorage.clear();
+			alert("All data deleted");
+				window.location.reload();
+				return false;
+		}
+	};	
 //Variable Defaults	
 	var contactGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeValue
-	;
+		toeValue;
 	makeCats();
 	
 	//Set Link and Submit Click Events		
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
-	//var clearLink = $("clear");
-	//clearLink.addEventListener("click", clearLocal);
+	var clearLink = $("clear");
+	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
