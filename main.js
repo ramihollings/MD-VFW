@@ -3,6 +3,7 @@
 // Rami Hollingsworth
 // Term 0112
 
+
 // Wait until DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
 	alert(localStorage.value(0));
@@ -57,11 +58,11 @@ window.addEventListener("DOMContentLoaded", function(){
 	;
 	selectOwnership();
 	
-//Set Link and Submit Click Events	
+	/*Set Link and Submit Click Events	
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
 	var clearLink = $("clear");
-	clearLink.addEventListener("click", clearLocal);
+	clearLink.addEventListener("click", clearLocal);*/
 	var save = $("submit");
 	save.addEventListener("click", storeData);
 });
