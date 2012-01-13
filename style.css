@@ -5,36 +5,69 @@ Rami Hollingsworth
 Term 0112
 */
 
-
 h1 {
-	margin: 5px 10px;
-	border: 3px solid #000;
-	padding-left: 5px;
-	background-color: blue
-
+	border-style: groove;
+	padding: 2%;
+	margin: 1%;
+	background-color: 5F5E62;
+	color: white;
+	font-size: 30px;
+	letter-spacing: 1px;
+	word-spacing: 1px;
+	text-shadow: 2px 2px 1px black;
+	font-family: "Century Gothic";
 }
 
-legend{
-	color: red;
-	font-style: ;
-	font-family: "Times New Roman";
-	font-weight: bold
-	line-height: 15px;
-	
+nav {
+	list-style-type: none;
+	font-family: "Gill Sans";
+}
+
+form {
+	display: inline;
+	border-style: none;
+	font-family: "Century Gothic";
+}
+
+body {
+	text-align: left;
+	display: inline;
+	background-color: #8F8D88;
+}
+legend {
+	margin: 20px;
+	padding-right: 3%;
+	text-shadow: 1px 1px 2px white;
+	font-style: italic;
+	font-size: 18px;
+	font-family: "Century Gothic";
+}
+
+li {
+	display: block;
+	float: none;
+	font-family: "Century Gothic";
+	list-style-type: none;
+}
+button {
+	margin-left: auto
+	padding-left: 1px;
+	padding-right: 12px;
+	background-color: 261F40;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-family: "Gill Sans";
+}
+a {
+	padding-left: 14px;
+	font-family: "Gill Sans";
+}
+p {
+	padding: 14px;
+	color: white;
+	font-size: 15px;
+	text-shadow: 1px 1px 2px black;
+	font-family: "Century Gothic";
 }
 
 
-	
-/*
-
-
-hover{color:white;outline: 1px blue}
-	padding:;
-	outline:;
-	width:;
-	height:;
-	display: ;
-	overflow: ;
-	visibility: ;
-	word-wrap: ;
-}

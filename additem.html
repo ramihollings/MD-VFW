@@ -6,6 +6,9 @@
 
 <html lang="en">
 <head>
+<style type="text/css">
+
+</style>
 	<meta charset="utf-8" />
 	<meta name= "description" content= "Track and list all the Electronics you have, will or want to own."/>
 	<meta name= "keywords" content= "gadget, electronics, database, list" />
@@ -17,8 +20,6 @@
 <body>
 	<header><h1>Electronics DataBase</h1></header>
 	<nav>
-		<a href="#" id="clear">Clear Stored Data</a>
-		<a href="#" id="displayLink">Display Data</a>
 		<a href="additem.html" id="addNewItem" style="display:none;">Add New Item</a>
 	</nav>
 	<form action= "#" method= "post">
@@ -37,16 +38,19 @@
 							<li><input type="radio" checked value="Computer" id="computer" name="toe" /><label for= "computer">Computer</label></li>
 							<li><input type="radio" value="TV" id="tv" name="toe" /><label for= "tv">T.V.</label></li>
 							<li><input type="radio" value="Phone" id="phone" name="toe" /><label for= "phone">Phone</label></li>
-							<li><input type="radio" value="Other" id="other" name="toe" /><label for= "other">Other</label></li>
-							<li><label for= "notes">Notes</label><textarea rows="1" cols="20" id="notes">Enter your notes here...</textarea>	
+							<li><input type="radio" value="Other" id="other" name="toe" /><label for= "other">Other</label><br /></li>
+						</ul>
+						<ul>
+							<li><label for= "notes">Notes</label><textarea rows="1" cols="20" id="notes">Enter your notes here...</textarea></li>	
 						</ul>
 					</li>
 				</ul>
 			</div>
-		<a href="#" id="clear">Clear Stored Data</a>
-		<a href="#" id="displayLink">Display Data</a>
 		</fieldset>
-		<button type="submit"> Submit</button>
+	<nav>
+		<button type="submit">Submit</button>
+		<a href="#" id="clear">Clear Stored Data</a>
+		<a href="#" id="displayLink">Display Data</a></nav>
 		<script src="main.js" type="text/javascript"></script>
 </body>
 	
