@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		getSelectRadio();
 		var item 			={};
 			item.group		=["Group:", $("groups").value];
-			item.ename		=["Name of Electronic:", $("name").value];
+			item.name		=["Name of Electronic:", $("name").value];
 			item.purchase	=["Purchase Date:", $("purchased").value];
 			item.rating		=["Rate it on a scale of 1 to 5:", $("rating").value];
 			item.toe		=["Type of Electronic:", toeValue];
@@ -132,11 +132,11 @@ window.addEventListener("DOMContentLoaded", function(){
 				radios[i].setAttribute("checked", "checked");
 			}else if (radios[i].value == "tv" && item.toe[1] == "tv"){
 				radios[i].setAttribute("checked", "checked");
-/*			}else if (radios[i].value == "phone" && item.toe[1] == "phone"){
+			}else if (radios[i].value == "phone" && item.toe[1] == "phone"){
 				radios[i].setAttribute("checked", "checked");
 			}else if (radios[i].value == "other" && item.toe[1] == "other"){
 				radios[i].setAttribute("checked", "checked");
-			}*/	
+			}	
 		} 
 		$("notes").value = item.notes[1];
 		
@@ -145,7 +145,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function clearLocal(){
 		if(localStorage.length ===0){
-			alert("Database Empty.")
+			alert("Database Empty.");
 		}else{
 			localStorage.clear();
 			alert("All data deleted");
