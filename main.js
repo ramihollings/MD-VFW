@@ -55,7 +55,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		getSelectRadio();
 		var item 			={};
 			item.group		=["Group:", $("groups").value];
-			item.name		=["Name of Electronic:", $("name").value];
+			item.ename		=["Name of Electronic:", $("name").value];
 			item.purchase	=["Purchase Date:", $("purchased").value];
 			item.rating		=["Rate it on a scale of 1 to 5:", $("rating").value];
 			item.toe		=["Type of Electronic:", toeValue];
