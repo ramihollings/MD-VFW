@@ -1,5 +1,5 @@
 // DOCTYPE html
-// Project: Web App Part 2
+// Project: Web App Part 3
 // Rami Hollingsworth
 // Term 0112
 
@@ -80,6 +80,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			$("items").style.display = "block";
 			for(var i=0, len=localStorage.length; i<len;i++){
 				var makeli = document.createElement("li");
+				var linksLi= document.createElement("li");
 				makeList.appendChild(makeli);
 				var key= localStorage.key(i);
 				var value = localStorage.getItem(key);
@@ -91,8 +92,31 @@ window.addEventListener("DOMContentLoaded", function(){
 					makeSubList.appendChild(makeSubli);
 					var optSubText = obj[n][0]+" "+obj[n][1];
 					makeSubli.innerHTML = optSubText;
+					makeSubli.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i),linksLi);
 		}
+	}
+	
+	function makeItemLinks(key, linksLi){
+		var editLink = document.createElement("a");
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Item";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		var deleteLink = document.createElement("a");
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Item";
+		deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+		
+		
+	
 	}
 	function clearLocal(){
 		if(localStorage.length ===0){
