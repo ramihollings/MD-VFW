@@ -3,7 +3,6 @@
 // Rami Hollingsworth
 // Term 0112
 
-
 window.addEventListener("DOMContentLoaded", function(){
 	function $(x){
 		var theElement = document.getElementById(x);
@@ -30,8 +29,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			toeValue = radios[i].value;
 			}
 		}
-	}
-	
+	}	
 	function toggleControls(n){
 		switch(n){
 			case "on":
@@ -65,8 +63,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Item Saved :]");
-	}
-		
+	}	
 	function getData(){
 			toggleControls();
 			if(localStorage.length ===0){
@@ -139,10 +136,8 @@ window.addEventListener("DOMContentLoaded", function(){
 			}	
 		} 
 		$("notes").value = item.notes[1];
-		
-		
-	}
-	
+		}
+		//
 	function clearLocal(){
 		if(localStorage.length ===0){
 			alert("Database Empty.");
