@@ -103,7 +103,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Item";
-		//editLink.addEventListener("click", editItem);
+		editLink.addEventListener("click", editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
@@ -114,10 +114,35 @@ window.addEventListener("DOMContentLoaded", function(){
 		//deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
-		
-		
-	
 	}
+	
+	function editItem(){
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		toggleControls("off");
+		
+		$("groups").value = item.group[1];
+		$("name").value = item.name[1];
+		$("purchased").value = item.purchased[1];
+		$("rating").value = item.rating[1];
+		var radios = document.forms[0].toe;
+		for(var i =0; i<radios.length; i++){
+			if(radios[i].value == "computer" && item.toe[1] == "computer"){
+				radios[i].setAttribute("checked", "checked");
+			}else if (radios[i].value == "tv" && item.toe[1] == "tv"){
+				radios[i].setAttribute("checked", "checked");
+/*			}else if (radios[i].value == "phone" && item.toe[1] == "phone"){
+				radios[i].setAttribute("checked", "checked");
+			}else if (radios[i].value == "other" && item.toe[1] == "other"){
+				radios[i].setAttribute("checked", "checked");
+			}*/	
+		} 
+		$("notes").value = item.notes[1];
+		
+		
+	}
+	
 	function clearLocal(){
 		if(localStorage.length ===0){
 			alert("Database Empty.")
