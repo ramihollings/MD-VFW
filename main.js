@@ -105,7 +105,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Item";
-	//editLink.addEventListener("click", editItem);
+		editLink.addEventListener("click", editItem);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 
@@ -117,6 +117,30 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
+	function editItem(){
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		toggleControls("off");
+		$("groups").value = item.group[1];
+		$("name").value = item.name[1];
+		$("purchased").value = item.purchased[1];
+		$("rating").value = item.rating[1];
+		var radios = document.forms[0].toe;
+		for(var i=0; i<radios.length; i++){
+			if(radios[i].value == "Computer" && item.toe[1] == "Computer"){
+				radios[i].setAttribute("checked", "checked");
+			}else if (radios[i].value == "TV" && item.toe[1] == "TV"){
+				radios[i].setAttribute("checked","checked");
+			}else if (radios[i].value == "Phone" && item.toe[1] == "Phone"){
+				radios[i].setAttribute("checked","checked");
+			}else if (radios[i].value == "Other" && item.toe[1] == "Other"){
+				radios[i].setAttribute("checked","checked");
+			}
+		}
+		$("notes").value == item.notes[1];
+	}
+	
 	function clearLocal(){
 		if(localStorage.length ===0){
 			alert("Database Empty.")
@@ -127,6 +151,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	};
+	
 	var dropAddToGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
 		toeValue;
 		selectBn();
