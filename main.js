@@ -52,13 +52,17 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
-	function storeData(){
-		var id = Math.floor(Math.random()*1000000007);
+	function storeData(key){
+		if(!key){
+			var id = Math.floor(Math.random()*1000000007);
+		}else{
+			id = key;
+		}
 	
 	getSelectRadio();
 		var item ={};
 			item.group =["Group:", $("groups").value];
-			item.ename =["Name of Electronic:", $("name").value];
+			item.name =["Name of Electronic:", $("name").value];
 			item.purchase =["Purchase Date:", $("purchased").value];
 			item.rating =["Rate it on a scale of 1 to 5:", $("rating").value];
 			item.toe =["Type of Electronic:", toeValue];
@@ -113,7 +117,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Item";
-	//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -122,10 +126,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		var item = JSON.parse(value);
 		
 		toggleControls("off");
-		$("groups").value = item.group[1];
-		$("name").value = item.name[1];
+		$("groups").value 	 = item.group[1];
+		$("name").value   	 = item.name[1];
 		$("purchased").value = item.purchased[1];
-		$("rating").value = item.rating[1];
+		$("rating").value 	 = item.rating[1];
 		var radios = document.forms[0].toe;
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].value == "Computer" && item.toe[1] == "Computer"){
@@ -138,22 +142,78 @@ window.addEventListener("DOMContentLoaded", function(){
 				radios[i].setAttribute("checked","checked");
 			}
 		}
-		$("notes").value == item.notes[1];
+		$("notes").value = item.notes[1];
+		
+		save.removeEventListener("click", storeData);
+		$("submit").value = "Edit Item";
+		var editSubmit = $("submit");
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+		
+		
+	}
+	function deleteItem(){
+		var ask = confirm("Do you want to delete this item. This can not be undone.");
+			if(ask){
+				localStorage.removeItem(this.key);
+				alert("Item Deleted");
+				window.location.reload();
+			}else{
+				alert("Item Deleted");
+			}
+		
 	}
 	
 	function clearLocal(){
 		if(localStorage.length ===0){
-			alert("Database Empty.")
+			alert("Database Empty.");
 		}else{
 			localStorage.clear();
 			alert("All data deleted");
 			window.location.reload();
 			return false;
 		}
-	};
+	}
+	
+	function validate(e){
+		var getGroup = $("groups");
+		var getName  = $("name");
+		
+		
+		
+		errMsg.innerHTML = "";
+			getGroup.style.border = "1px solid black";
+			getName.style.border = "1px solid black";
+		
+		var messageA = [];
+		if (getGroup.value === "---Do I own this Item---"){
+			var groupError = "Please pick a group.";
+			getGroup.style.border = "1px solid red";
+			messageA.push(groupError);
+		}
+		
+		if (getName.value === ""){
+			var nameError = "Please put in name for DataBase.";
+			getName.style.border = "1px solid red";
+			messageA.push(nameError);
+		}
+		
+		if (messageA.length >=1){
+			for(var i=0, j=messageA.length; i<j; i++){
+				var txt = document.createElement("li");
+				txt.innerHTML = messageA[i];
+				errMsg.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		}else{
+			storeData(this.key);
+		}		
+	}
 	
 	var dropAddToGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeValue;
+		toeValue, 
+		errMsg = $("errors");
 		selectBn();
 
 	var displayLink = $("displayLink");
