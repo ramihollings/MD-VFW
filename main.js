@@ -3,35 +3,41 @@
 // Rami Hollingsworth
 // Term 0112
 
-
+// Wait until the DOM is ready.
 window.addEventListener("DOMContentLoaded", function(){
+
+	//getElementById Function
 	function $(x){
-			var theElement = document.getElementById(x);
-			return theElement;
+		var theElement = document.getElementById(x);
+		return theElement;
 	}
-	function selectBn(){
-			var formTag = document.getElementsByTagName("form"),
+	
+	//Create select field element and populate with options.
+	function makeCats(){
+		var formTag = document.getElementsByTagName("form"),// formtag is an array of all the form tags.
 			selectLi = $("select"),
 			makeSelect = document.createElement("select");
-			makeSelect.setAttribute("id","groups");
-				for (var i=0,j=dropAddToGroups.length; i<j; i++){
-					var makeOption = document.createElement("option");
-					var optText = dropAddToGroups[i];
-					makeOption.setAttribute("value", optText);
-					makeOption.innerHTML = optText;
-					makeSelect.appendChild(makeOption);
-				}
-			selectLi.appendChild(makeSelect);
+			makeSelect.setAttribute("id", "groups");
+		for(var i=0, j=contactGroups.length; i<j; i++){
+			var makeOption = document.createElement("option");
+			var optText = contactGroups[i];
+			makeOption.setAttribute("value", optText);
+			makeOption.innerHTML = optText;
+			makeSelect.appendChild(makeOption);
+		}
+		selectLi.appendChild(makeSelect);
 	}
-	function getSelectRadio(){
+	
+	//Find value of selected radio button.
+	function getSelectedRadio(){
 		var radios = document.forms[0].toe;
-			for(var i=0; i<radios.length; i++){
-				if(radios[i].checked){
-				toeValue = radios[i].value;
-				}
-			}
+		for(var i=0; i<radios.length; i++){
+			if(radios[i].checked){
+			toeValue = radios[i].value;
+			}	
+		}
 	}
-
+	
 	function toggleControls(n){
 		switch(n){
 		case "on":
@@ -52,66 +58,70 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
+
 	function storeData(key){
-//////		//if there is no key, this means this is a brand new item and we need a key
 		if(!key){
-			var id = Math.floor(Math.random()*100000001);
+			var id 			= Math.floor(Math.random()*100000001);
 		}else{
-			//Set the id to existing key we're editing so that it will save over the
-			//The key is same key that's been passed along from the edit Submit event
-			//to the validate funtion, and then passed here, into the storeData function
 			id = key;
 		}
-	
-	getSelectRadio();
-		var item ={};
-			item.group =["Group:", $("groups").value];
-			item.name =["Name of Electronic:", $("name").value];
-			item.purchased =["Purchased Date:", $("purchased").value];
-			item.rating =["Rate it on a scale of 1 to 5:", $("rating").value];
-			item.toe =["Type of Electronic:", toeValue];
-			item.notes =["Notes:", $("notes").value];
-
-	localStorage.setItem(id, JSON.stringify(item));
-			alert("Item Saved :]");
+		//gather all form fiel values an store in an objects
+		//Object proprties contain array with the form label
+		getSelectedRadio();
+		var item 			= {};
+			item.group		= ["Group:", $("groups").value];
+			item.name  		= ["Name:", $("name").value];
+			item.purchased	= ["Purchase Date:", $("purchased").value];
+			item.rating		= ["Rating:", $("rating").value];
+			item.toe 		= ["Type of Electronic:", toeValue];
+			item.notes		= ["Notes:", $("notes").value];
+		//Save data into localstorage: using Stringify to convert object to string.
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Item Saved!");
 	}
-
+	
 	function getData(){
 		toggleControls("on");
-		if(localStorage.length ===0){
+		if(localStorage.length === 0){
 			alert("No data Stored. Default data added.");
 			autoFillData();
 		}
-		//Write Data From Local Storage to the Browser.
+		//write data from loacal storage to the browser.
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
-		$("items").style.display = "block";
+		$("items").style.display = "display";
 		for(var i=0, len=localStorage.length; i<len;i++){
-				var makeli 	= document.createElement("li");
-				var linksLi	= document.createElement("li");
-				makeList.appendChild(makeli);
-				var key 	= localStorage.key(i);
-				var value 	= localStorage.getItem(key);
-				//Convert the String from Local Storage value back to an object by using JSON
-				var obj 	= JSON.parse(value);
-				var makeSubList = document.createElement("ul");
-				makeli.appendChild(makeSubList);
+			var makeli 	= document.createElement("li");
+			var linksLi = document.createElement("li")
+			makeList.appendChild(makeli);
+			var key 	= localStorage.key(i);
+			var value 	= localStorage.getItem(key);
+			//Convert the String from Local Storage value back to an object by using JSON
+			var obj 	= JSON.parse(value);
+			var makeSubList = document.createElement("ul");
+			makeli.appendChild(makeSubList);
+			getImage(obj.group[1], makeSubList);
 			for(var n in obj){
 				var makeSubli = document.createElement("li");
 				makeSubList.appendChild(makeSubli);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubli.innerHTML = optSubText;
-				makeSublist.appendChild(linksLi);
-			}
-			makeItemLinks(localStorage.key(i),linksLi);// Create our edit and delete button/links for each item in local storage.
+				makeSubList.appendChild(linksLi);
+			}	
+			makeItemLinks(localStorage.key(i), linksLi); //Create our edit and delete links for each item in local storage.
 		}
 	}
 	
-	//Get the image for the right catagory
-	
+	//Get image for right catagory
+	function getImage(imeName, makeSubList){
+	 var imageLi = document.createElement("li")
+	 makeSubList.appendChild(imageLi);
+	 var newImg = document.createElement("img");
+	 var setSrc = newImg.setAttribute("src", "images/"+ imeName + ".png");
+	}
 	//Auto Populate local storage.
 	function autoFillData(){
 		//The actual JSON Object data required for this to work is coming from our json.js file, which is loaded from our HTML page.
@@ -123,6 +133,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+
 	//Make Items Links
 	//Create the edit and delete links for each stored item when displayed.
 	function makeItemLinks(key, linksLi){
@@ -142,11 +153,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
+
+		
 	function editItem(){
+		//Grab the data from our item from local storage.
 		var value = localStorage.getItem(this.key);
 		var item = JSON.parse(value);
 		
+		//show the form
 		toggleControls("off");
+		
+		//populate the form fields with current localStorage values.
 		$("groups").value 	 = item.group[1];
 		$("name").value   	 = item.name[1];
 		$("purchased").value = item.purchased[1];
@@ -155,10 +172,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		for(var i=0; i<radios.length; i++){
 			if(radios[i].value == "Phone" && item.toe[1] == "Phone"){
 				radios[i].setAttribute("checked", "checked");
-			}else if (radios[i].value == "Other" && item.toe[1] == "Other"){
+			}else if(radios[i].value == "Other" && item.toe[1] == "Other"){
 				radios[i].setAttribute("checked","checked");
 			}
 		}
+		
 		$("notes").value = item.notes[1];
 		
 		save.removeEventListener("click", storeData);
@@ -180,9 +198,9 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		
 	}
-	
+		
 	function clearLocal(){
-		if(localStorage.length ===0){
+		if(localStorage.length === 0){
 			alert("Database Empty.");
 		}else{
 			localStorage.clear();
@@ -191,7 +209,6 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
-	
 	function validate(e){
 		var getGroup = $("groups");
 		var getName  = $("name");
@@ -227,16 +244,17 @@ window.addEventListener("DOMContentLoaded", function(){
 			storeData(this.key);
 		}		
 	}
-	
-	var dropAddToGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
-		toeValue, 
-		errMsg = $("errors");
-		selectBn();
 
+	//Variable defaults
+	var contactGroups = ["---Do I own this Item---", "I own it","I owned", "Really Want It"],
+		toeValue;
+	makeCats();
+
+	//Set Links & Submit Click Events
 	var displayLink = $("displayLink");
-		displayLink.addEventListener("click", getData);
-		var clearLink = $("clear");
-		clearLink.addEventListener("click", clearLocal);
-		var dark = $("submit");
-		dark.addEventListener("click", storeData);
+	displayLink.addEventListener("click", getData);
+	var clearLink = $("clear");
+	clearLink.addEventListener("click", clearLocal);
+	var save = $("submit");
+	save.addEventListener("click", storeData);
 });
