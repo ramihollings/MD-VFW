@@ -121,6 +121,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	 makeSubList.appendChild(imageLi);
 	 var newImg = document.createElement("img");
 	 var setSrc = newImg.setAttribute("src", "images/"+ imeName + ".png");
+	 imageLi.appendChild(newImg);
 	}
 	//Auto Populate local storage.
 	function autoFillData(){
@@ -232,6 +233,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			messageA.push(nameError);
 		}
 		
+		//If there were errors, display them on the screen.
 		if (messageA.length >=1){
 			for(var i=0, j=messageA.length; i<j; i++){
 				var txt = document.createElement("li");
@@ -246,8 +248,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 
 	//Variable defaults
-	var contactGroups = ["---Do I own this Item---", "I own it","I owned", "Really Want It"],
-		toeValue;
+	var contactGroups = ["---Do I own this Item---", "Own","Owned", "Want"],
+		toeValue,
+		errMsg = $("errors");
 	makeCats();
 
 	//Set Links & Submit Click Events
